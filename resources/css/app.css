@@ -1,0 +1,115 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+
+
+:root {
+    --primary-color: #fcc14c;
+    --secundary-color: #4C92FC;
+}
+
+/* Btn */
+
+.btn {
+    @apply px-6 py-2 transition-all duration-500
+}
+
+.btn.btn-primary {
+    @apply text-black font-bold rounded hover:bg-black
+}
+
+.btn.btn-danger {
+    @apply text-white font-bold rounded bg-red-500 hover:bg-black
+}
+
+.btn.btn-primary {
+    background-color: var(--primary-color)
+}
+
+.btn.btn-primary:hover {
+    color: var(--primary-color)
+}
+
+/* Navbar */
+
+.navbar {
+    @apply  bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800
+}
+
+.navbar-item {
+    @apply block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0  md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700
+}
+
+.navbar-item {
+
+}
+
+.navbar-item:hover {
+    color: var(--primary-color);
+}
+
+.navbar-item.active {
+    @apply block py-2 pr-4 pl-3 text-white md:p-0 dark:text-white
+}
+
+.navbar-item.active {
+    color: var(--primary-color)
+}
+
+.navbar-fixed-width {
+    margin-left: auto;
+    margin-right: auto;
+  
+    @media all and (min-width: @screen-sm-min) {
+      width: @screen-sm-min;
+    }
+  
+    @media all and (min-width: @screen-md-min) {
+      width: @screen-md-min;
+    }
+  
+    @media all and (min-width: @screen-lg-min) {
+      width: @screen-lg-min;
+    }
+  }
+
+  /* Video */
+  .video-catetory-link {
+    @apply text-gray-500 mt-4 text-sm inline-block border border-transparent transition-all duration-500
+  }
+
+  .video-catetory-link {
+      padding: 0.12rem;
+  }
+  .video-catetory-link:hover {
+      border-bottom-color: var(--primary-color);
+  }
+
+
+  .video-responsive {
+      width: 100%;
+  }
+
+@media (min-width: 640px) { 
+    .video-responsive {
+        height: 360px;
+    }
+ }
+@media (min-width: 768px) { 
+    .video-responsive {
+        height: 520px;
+    }
+}/* 
+@media (min-width: 1024px) { 
+    .video-responsive {
+        height: 640px;
+    }
+}
+@media (min-width: 1280px) { 
+    .video-responsive {
+        height: 520px
+    }
+} */
+  
