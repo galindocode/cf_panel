@@ -22,21 +22,29 @@
         <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                 <li>
-                    <a id="link-home" href="#" class="navbar-item active" aria-current="page">Home</a>
+                    <a id="link-home" href="{{ url("/") }}" class="navbar-item active" aria-current="page">Home</a>
                 </li>
                 <li>
                     <a id="link-videos" href="{{ url("/videos") }}" class="navbar-item">Videos</a>
 
                 </li>
                 <li>
-                    <a id="link-pricing" href="#" class="navbar-item">Pricing</a>
+                    <a id="link-pricing" href="{{ url("/precios") }}" class="navbar-item">Precios</a>
                 </li>
+                {{-- Login --}}
+                @auth
+                <li>
+                    <a href="{{ url('/dashboard') }}" class="navbar-item">Dashboard</a>
+                </li>
+                @else
                 <li>
                     <a href="{{ url('/register') }}" class="navbar-item">Registro</a>
                 </li>
                 <li>
                     <a href="{{ url('login') }}" class="navbar-item">Iniciar sesion</a>
                 </li>
+                @endauth
+
             </ul>
         </div>
     </div>
@@ -56,7 +64,7 @@
         document.getElementById("link-home").classList.remove("active");
         document.getElementById("link-videos").classList.add("active");
     }
-    else if(site.includes("pricing")){
+    else if(site.includes("precios")){
         document.getElementById("link-home").classList.remove("active");
         document.getElementById("link-pricing").classList.add("active");
     }
