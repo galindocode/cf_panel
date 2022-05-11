@@ -20,16 +20,26 @@
                 <h1 class="text-3xl font-title font-bold  mb-2">Todos los videos</h1>
             </div>
             {{-- Start Categories List --}}
-            <div class="text-center">
-                <button class="show-all-cats btn shadow-lg btn-primary my-4">Mostrar todas las categorías</button>
-            </div>
-            <div class="w-full md:mx-4 cat-divs hidden opacity-0 transition-all duration-500">
-                <livewire:categories.list-inline />
+            <div class="lg:hidden">
+                <div class="text-center">
+                    <button class="show-all-cats btn shadow-lg btn-primary my-4">Mostrar todas las categorías</button>
+                </div>
+                <div class="w-full md:mx-4 cat-divs hidden opacity-0 transition-all duration-500">
+                    <livewire:categories.list-inline />
+                </div>
             </div>
             {{-- End Categorie List --}}
             @endisset
 
-            <livewire:videos.videos-all :videos="$videoList">
+            <div class="lg:grid lg:grid-cols-6">
+                <div class="col-span-1 text-center hidden lg:block">
+                    <livewire:categories.list-side>
+                </div>
+
+                <div class="lg:col-span-5 lg:ml-4">
+                    <livewire:videos.videos-all :videos="$videoList">
+                </div>
+            </div>
         </div>
         <livewire:layouts.footer />
 
