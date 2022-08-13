@@ -1,8 +1,9 @@
-<nav class="navbar sticky top-0">
+<nav class="navbar sticky top-0 z-100">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="{{ url('/') }}" class="flex items-center">
-            <img src="{{ asset('images/logo.png') }}" class="mr-3 h-6 sm:h-9" alt="Criptofamilia" />
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Criptofamilia</span>
+            <img src="{{ asset('images/logo.png') }}" class="mr-3 h-6 sm:h-9" alt="EmpresarioDigital" />
+            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">EmpresarioDigital</span>
+            <span class="mx-2 px-2 bg-blue-500 text-white text-sm rounded-md">Beta</span>
         </a>
         <button id="menu-btn" type="button"
             class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -21,29 +22,18 @@
         </button>
         <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-                <li>
-                    <a id="link-home" href="{{ url("/") }}" class="navbar-item active" aria-current="page">Home</a>
+                <a class="navbar-item" href="{{ url("/videos") }}">
+                    <i class="fa-solid fa-brain"></i>
+                    <span id="link-videos">Videos</span>
+                </a>
+                <li class="navbar-item">
+                    <i class="fa-solid fa-icons"></i>
+                    <a id="link-pricing" href="{{ url("/categorias") }}">Categorias</a>
                 </li>
-                <li>
-                    <a id="link-videos" href="{{ url("/videos") }}" class="navbar-item">Videos</a>
-
+                <li class="navbar-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a id="link-pricing" href="{{ url("/buscar") }}">Buscar</a>
                 </li>
-                <li>
-                    <a id="link-pricing" href="{{ url("/precios") }}" class="navbar-item">Precios</a>
-                </li>
-                {{-- Login --}}
-                @auth
-                <li>
-                    <a href="{{ url('/dashboard') }}" class="navbar-item">Dashboard</a>
-                </li>
-                @else
-                <li>
-                    <a href="{{ url('/register') }}" class="navbar-item">Registro</a>
-                </li>
-                <li>
-                    <a href="{{ url('login') }}" class="navbar-item">Iniciar sesion</a>
-                </li>
-                @endauth
 
             </ul>
         </div>

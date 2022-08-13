@@ -23,7 +23,7 @@ class VideosController extends Controller
         ]);
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -43,12 +43,20 @@ class VideosController extends Controller
      */
     public function store(Request $request)
     {
+        $type = $this->getType($request);
+        $functionName = 'store' . $type . 'Video';
+        $this->$functionName($request);
+
+
+        return redirect('/admin/videos');
+    }
+
+    private function storeYoutubeVideo(Request $request)
+    {
         $data = $request->all();
         $data['user_id'] = Auth::id();
         $data['slug'] = str_replace(' ', '-', Str::lower($data['small_description']));
         Videos::create($data);
-
-        return redirect('/admin/videos');
     }
 
     /**
@@ -94,5 +102,13 @@ class VideosController extends Controller
     public function destroy(Videos $videos)
     {
         $videos->delete();
+    }
+
+    // Helpers
+
+    private function getType(Request $request)
+    {
+        $type = $request->input('type');
+        return  ucfirst(strtolower($type));
     }
 }

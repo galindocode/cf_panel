@@ -17,7 +17,7 @@
             </div>
             @else
             <div class=" my-8 text-center mx-auto w-80">
-                <h1 class="text-3xl font-title font-bold  mb-2">Todos los videos</h1>
+                <h1 class="text-2xl font-title font-bold  mb-2">Todos los videos</h1>
             </div>
             {{-- Start Categories List --}}
             <div class="lg:hidden">

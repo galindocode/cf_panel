@@ -2,10 +2,10 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
-    --primary-color: #fcc14c;
+    --primary-color: rgb(31 41 55);
     --secundary-color: #4C92FC;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .btn.btn-primary {
-    @apply text-black font-bold rounded hover:bg-black
+    @apply text-white font-bold rounded hover:bg-black hover:text-white
 }
 
 .btn.btn-danger {
@@ -27,9 +27,6 @@
     background-color: var(--primary-color)
 }
 
-.btn.btn-primary:hover {
-    color: var(--primary-color)
-}
 
 /* Navbar */
 
@@ -38,15 +35,17 @@
 }
 
 .navbar-item {
-    @apply block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0  md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700
+    @apply text-white flex items-center justify-between text-base px-4 py-1.5 rounded-md
 }
 
-.navbar-item {
 
+.navbar-item i{
+    @apply mr-2 text-lg font-bold
 }
+
 
 .navbar-item:hover {
-    color: var(--primary-color);
+    background-color: var(--primary-color);
 }
 
 .navbar-item.active {
@@ -54,6 +53,7 @@
 }
 
 .navbar-item.active {
+    cursor: none;
     color: var(--primary-color)
 }
 

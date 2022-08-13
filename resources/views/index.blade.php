@@ -1,6 +1,6 @@
-<livewire:layouts.header :title="'Criptofamilia | Home'" />
+<livewire:layouts.header :title="'EmpresarioDigital | Home'" />
 <livewire:layouts.navbar-main />
 
-<img src="{{ asset('images/main-background.png') }}" alt="fondo planeta con el logo de criptofamilia" srcset="">
+<img src="{{ asset('images/main-background.png') }}" alt="" srcset="">
 
 <livewire:layouts.footer>

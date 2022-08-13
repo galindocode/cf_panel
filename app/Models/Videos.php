@@ -31,7 +31,7 @@ class Videos extends Model
 
     public function getExcerptAttribute()
     {
-        return substr($this->description, 0, 60) . '...';
+        return substr($this->description, 0, 100) . '...';
     }
 
     public function categorie()

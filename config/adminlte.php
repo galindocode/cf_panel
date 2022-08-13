@@ -16,7 +16,7 @@ return [
 
     'title' => '',
     'title_prefix' => '',
-    'title_postfix' => '| Criptofamilia Administración',
+    'title_postfix' => '| EmpresarioDigital Administración',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Criptofamilia</b>',
+    'logo' => '<b>EmpresarioDigital</b>',
     'logo_img' => 'images/logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Criptofamilia logo',
+    'logo_img_alt' => 'EmpresarioDigital logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -294,6 +294,18 @@ return [
             'text' => 'Usuarios',
             'url'  => 'admin/users',
             'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Lista de usuarios',
+                    'url'  => 'admin/users',
+                    'icon' => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'Añadir usuario',
+                    'url'  => 'admin/users/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                ],
+            ],
         ],
         ['header' => 'En desarrollo'],
         [

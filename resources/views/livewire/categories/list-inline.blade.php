@@ -12,11 +12,11 @@
                 <span class="text-gray-500">{{$cat->name}}</span>
             </span>
             <span class="block my-auto">
-                @if($cat->free)
+                {{-- @if($cat->free) --}}
                 <i class="fa-solid fa-eye"></i>
-                @else
-                <i class="fa-solid fa-lock"></i>
-                @endif
+                {{-- @else --}}
+                {{-- <i class="fa-solid fa-lock"></i> --}}
+                {{-- @endif --}}
             </span>
 
         </a>

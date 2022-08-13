@@ -10,6 +10,8 @@ $count = 1;
 @stop
 
 @section('content')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <div class="container">
     <div class="card p-4">
         <form action="{{url('/admin/videos')}}" method="POST">
@@ -31,10 +33,23 @@ $count = 1;
                     usará para fines tecnicos. Por favor asegurese de que no se repita con una anterior.</small>
             </div>
 
+            {{-- Video Type --}}
+            <div class="form-group" id="video-type">
+                <label for="add-video-category">Tipo de Video</label>
+                <select name="type" id="add-video-category" class="form-control">
+                    <option value="youtube">Youtube</option>
+                    <option value="file">Video Local</option>
+                </select>
+            </div>
+
             {{-- Video Path --}}
-            <div class="form-group">
+            <div class="form-group" id='add-video-youtube'>
                 <label for="add-video-url">URL del Video</label>
                 <input type="url" name="path" class="form-control" id="add-video-url" placeholder="URL del Video">
+            </div>
+            <div class="form-group d-none" id='add-video-file'>
+                <label for="add-video-url">Subir video</label>
+                <input type="file" name="video-file" class="form-control" id="add-video-file">
             </div>
 
             {{-- Category --}}
@@ -47,13 +62,6 @@ $count = 1;
                 </select>
             </div>
 
-            {{-- Video Type --}}
-            <div class="form-group">
-                <label for="add-video-category">Tipo de Video</label>
-                <select name="type" id="add-video-category" class="form-control">
-                    <option value="youtube">Youtube</option>
-                </select>
-            </div>
 
             {{-- Video Description --}}
             <div class="form-group">
@@ -65,6 +73,12 @@ $count = 1;
         </form>
     </div>
 </div>
+<script>
+    $('#video-type').change(() => {
+        $("#add-video-youtube").toggleClass('d-none');
+        $("#add-video-file").toggleClass('d-none');
+    });
+</script>
 @stop
 
 @section('css')

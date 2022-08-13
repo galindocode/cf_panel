@@ -19,8 +19,11 @@ Route::get('/', function () {
 
 Route::get("/precios", [\App\Http\Controllers\PricingController::class, 'index']);
 
-Route::resource('/videos', \App\Http\Controllers\VideosController::class);
-Route::resource('/categories', \App\Http\Controllers\CategoriesController::class);
+Route::resource('/videos', \App\Http\Controllers\VideosController::class)
+    ->middleware('auth');
+Route::resource('/categories', \App\Http\Controllers\CategoriesController::class)
+    ->middleware('auth');
+
 
 
 Route::get("/videos/category/{cat}", [\App\Http\Controllers\VideosController::class, 'listForCat']);
