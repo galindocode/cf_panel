@@ -5,10 +5,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
-    --primary-color: rgb(31 41 55);
-    --secundary-color: #4C92FC;
-}
+    --dark-base: #0F044C;
+    --primary-color: #141E61;
+    --secundary-color: #787A91;
 
+    --text-light-color: #EEEEEE;
+}
+.resource-video-item {
+    @apply flex flex-col w-full px-4 py-2 my-4 bg-dark-base text-white rounded-lg transition-all duration-150 hover:shadow-sm
+}
 /* Btn */
 
 .btn {
@@ -31,7 +36,19 @@
 /* Navbar */
 
 .navbar {
-    @apply  bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800
+    @apply border-gray-200 px-2 sm:px-4 py-2.5 rounded 
+}
+.navbar {
+    background-color: var(--primary-color);
+}
+.bg-dark-base {
+    background-color: var(--dark-base);
+}
+.text-color-base {
+    color: var(--text-light-color);
+}
+.bg-primary {
+    background-color: var(--primary-color);
 }
 
 .navbar-item {
@@ -118,5 +135,7 @@
 }
 
 body {
+    background-color: #0F044C;
+    color: #EEEEEE;
     font-family: 'Open Sans', sans-serif;
 }
