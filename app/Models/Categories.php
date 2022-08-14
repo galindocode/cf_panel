@@ -13,7 +13,8 @@ class Categories extends Model
         'name',
         'description',
         'slug',
-        'free'
+        'free',
+        'image'
     ];
     public function getExcerptAttribute()
     {
