@@ -22,17 +22,21 @@ class CategoriesController extends Controller
         return view('admin.categories.create');
     }
 
-    public function store(
-        Request $req
-    ) {
-        $data = $req->all();
+    public function store(Request $request)
+    {
+
+        $image = $request->file('image');
+        $new_name = rand() . '.' . $image->extension();
+        $image->move(public_path('images'), $new_name);
+        $data = $request->all();
         $data['slug'] = str_replace(' ', '-', Str::lower($data['name']));
 
         Categories::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'slug' => $data['slug'],
-            'free' => $data['free']
+            'free' => $data['free'],
+            'image' => $new_name
         ]);
 
         return redirect('/admin/categories');

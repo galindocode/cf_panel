@@ -17,7 +17,7 @@ class VideosController extends Controller
     public function index()
     {
         return view('videos.index', [
-            'videos' => Videos::latest()->paginate(8)
+            'videos' => Videos::latest()->take(8)->get()
         ]);
     }
 
@@ -25,8 +25,8 @@ class VideosController extends Controller
     {
         $cat = Categories::where('name', $catName)->first();
         return view('videos.index', [
-            'videos' => Videos::where('categorie_id', $cat->id)->latest()->paginate(8),
-            'catName' => $catName
+            'videos' => Videos::where('categorie_id', $cat->id)->get(),
+            'category' => $cat
         ]);
     }
 

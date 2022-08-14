@@ -21,6 +21,7 @@ $count = 0;
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Precio</th>
+            <th scope="col">Imagen</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
@@ -31,6 +32,7 @@ $count = 0;
             <td>{{ $categorie->name }}</td>
             <td>{{ $categorie->excerpt }}</td>
             <td>{{ $categorie->price }}</td>
+            <td><img src="{{asset('images/' . $categorie->image )}}" width="64" alt="" /></td>
             <td>
                 <a href="{{ url('admin/categories/' . $categorie->id . '/edit') }}" class="btn btn-primary">Editar</a>
                 <form action="{{ url('admin/categories/' . $categorie->id) }}" method="POST" class="d-inline">

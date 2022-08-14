@@ -32,7 +32,7 @@
                 </li>
                 <li class="navbar-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <a id="link-pricing" href="{{ url("/buscar") }}">Buscar</a>
+                    <a id="link-pricing" href="{{ url("/search") }}">Buscar</a>
                 </li>
 
             </ul>

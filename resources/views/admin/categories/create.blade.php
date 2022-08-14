@@ -11,7 +11,7 @@ $count = 0;
 
 @section('content')
 <div class="card p-4">
-    <form action="{{url('admin/categories')}}" method="POST">
+    <form action="{{url('admin/categories')}}" method="POST" enctype="multipart/form-data">
         @csrf
         {{-- Name --}}
         <div class="form-group">
@@ -34,6 +34,12 @@ $count = 0;
                 <option value="0">Si</option>
                 <option value="1">No</option>
             </select>
+        </div>
+
+        {{-- Image Category --}}
+        <div class="form-group">
+            <label for="image" class="form-label">Imagen de la categoria</label>
+            <input type="file" class="form-control" name="image" id="image" accept="image/png, image/gif, image/jpeg">
         </div>
 
         {{-- Description --}}

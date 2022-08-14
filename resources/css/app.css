@@ -5,14 +5,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
-    --dark-base: #0F044C;
-    --primary-color: #141E61;
+    --dark-base: #041C32;
+    --primary-color: #042332;
     --secundary-color: #787A91;
 
     --text-light-color: #EEEEEE;
 }
 .resource-video-item {
-    @apply flex flex-col w-full px-4 py-2 my-4 bg-dark-base text-white rounded-lg transition-all duration-150 hover:shadow-sm
+    @apply flex flex-col w-full px-4 py-4 my-4 border-2 border-green-800 hover:scale-105 transition-transform duration-150 text-white rounded-lg transition-all duration-150 hover:shadow-sm
 }
 /* Btn */
 
@@ -21,22 +21,19 @@
 }
 
 .btn.btn-primary {
-    @apply text-white font-bold rounded hover:bg-black hover:text-white
+    @apply text-white font-bold rounded bg-green-800 hover:bg-green-900
 }
 
 .btn.btn-danger {
     @apply text-white font-bold rounded bg-red-500 hover:bg-black
 }
 
-.btn.btn-primary {
-    background-color: var(--primary-color)
-}
 
 
 /* Navbar */
 
 .navbar {
-    @apply border-gray-200 px-2 sm:px-4 py-2.5 rounded 
+    @apply border-gray-200 px-2 sm:px-4 py-4 rounded z-10
 }
 .navbar {
     background-color: var(--primary-color);
@@ -50,7 +47,10 @@
 .bg-primary {
     background-color: var(--primary-color);
 }
-
+.category-side-item {
+    @apply rounded-lg shadow px-4 py-4 mr-2 my-1 inline-block transition-all
+        duration-500 text-white w-full flex justify-between
+}
 .navbar-item {
     @apply text-white flex items-center justify-between text-base px-4 py-1.5 rounded-md
 }
@@ -135,7 +135,7 @@
 }
 
 body {
-    background-color: #0F044C;
+    background-color: var(--dark-base);
     color: #EEEEEE;
     font-family: 'Open Sans', sans-serif;
 }

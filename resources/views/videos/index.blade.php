@@ -2,18 +2,51 @@
 <livewire:layouts.navbar-main>
 
     <body>
-        @php
-        $videoList = $videos->items()
-        @endphp
-
-
 
         <div class="px-4 md:px-8">
+            @isset($search)
+            <div class=" my-8 grid lg:grid-cols-12 items-center mx-auto w-80  md:w-full ">
+                <a href="{{url('/videos')}}" class="lg:col-span-2 btn btn-primary my-4 inline-block">Volver a todos los
+                    videos</a>
 
-            @isset($catName)
-            <div class=" my-8 text-center mx-auto w-80 md:w-full ">
-                <h1 class="text-3xl font-title font-bold  mb-2">{{ $catName }}</h1>
-                <a href="{{url('/videos')}}" class="btn btn-primary my-4 inline-block">Volver a todos los videos</a>
+                <div class="lg:col-span-6 mx-4 items-center flex">
+                    <div>
+                        <h1 class="text-2xl font-title block font-bold  mb-2">Busqueda de '{{ $search }}'</h1>
+                        <span>Se obtuvieron {{$videos->count()}} videos</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-4 flex w-full items-center">
+                    <form action="{{url('search')}}" method="POST" class="col-span-4 w-full">
+                        @csrf
+                        @method('POST')
+
+                        <div class="flex"><input type="text" name="search"
+                                placeholder="Buscar video por título, descripción o categoría"
+                                class="w-full h-10 rounded-lg text-slate-800" value="{{$search}}">
+
+                            <button type="submit" class="btn bg-green-800 mx-auto hover:bg-green-900 rounded-lg"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @endisset
+            @isset($category)
+            <div class=" my-8 grid lg:grid-cols-12 items-center mx-auto w-80  md:w-full ">
+                <a href="{{url('/videos')}}" class="lg:col-span-2 btn btn-primary my-4 inline-block">Volver a todos los
+                    videos</a>
+
+                <div class="lg:col-span-6 mx-4 items-center flex">
+                    <div>
+                        <h1 class="text-2xl font-title block font-bold  mb-2">{{ $category->name }}</h1>
+                        <span class="text-slate-200">{{ $category->description }}</span>
+                    </div>
+
+                </div>
+                <div class="lg:vi lg:col-span-4 flex justify-end px-8">
+                    <img src="{{asset('images/' . $category->image)}}" class="hidden lg:block h-[128px] rounded-lg"
+                        alt="" />
+                </div>
             </div>
             @else
             <div class=" my-8 text-center mx-auto w-80">
@@ -37,7 +70,7 @@
                 </div>
 
                 <div class="lg:col-span-5 lg:ml-4">
-                    <livewire:videos.videos-all :videos="$videoList">
+                    <livewire:videos.videos-all :videos="$videos">
                 </div>
             </div>
         </div>

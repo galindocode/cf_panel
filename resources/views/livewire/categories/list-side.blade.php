@@ -1,19 +1,16 @@
 <div class="text-left">
 
-    <h2 class="my-4 text-xl text-center font-bold">Categorías</h2>
+    <h2 class="my-4 text-xl text-center text-slate-300 font-bold">Categorías</h2>
 
     @foreach ($categories as $cat)
 
-    <a @if($cat->free)
-        href="{{url('videos/category/' . $cat->name)}}"
-        @endif
-        class="rounded-lg shadow px-4 py-4 mr-2 my-1 inline-block hover:bg-slate-200 transition-all
-        duration-500 text-gray-800 w-full flex justify-between">
+    <a href="{{url('videos/category/' . $cat->name)}}"
+        class="category-side-item bg-primary hover:scale-105 transition-transform duration-150">
         <span>
-            <b>Categoría:</b>
-            <span class="text-gray-500">{{$cat->name}}</span>
+            <b class="text-slate-300">Categoría:</b>
+            <span class="text-slate-500">{{$cat->name}}</span>
         </span>
-        <span class="block my-auto">
+        <span class="block my-auto text-slate-300">
             {{-- @if($cat->free) --}}
             <i class="fa-solid fa-eye"></i>
             {{-- @else --}}
