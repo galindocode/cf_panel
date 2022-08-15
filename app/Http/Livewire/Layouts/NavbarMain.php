@@ -8,9 +8,11 @@ use App\Models\Categories;
 class NavbarMain extends Component
 {
     public $categories;
+    public $search;
 
-    public function mount()
+    public function mount($search = '')
     {
+        $this->$search = $search;
         $categories = Categories::latest()->get();
     }
 

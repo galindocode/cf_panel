@@ -22,6 +22,11 @@
         </button>
         <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+                <a class="navbar-item" href="{{ url("/") }}">
+                    <i class="fa-solid fa-house"></i>
+                    <span id="link-videos">Home</span>
+                </a>
+                @auth
                 <a class="navbar-item" href="{{ url("/videos") }}">
                     <i class="fa-solid fa-brain"></i>
                     <span id="link-videos">Videos</span>
@@ -32,9 +37,24 @@
                 </li>
                 <li class="navbar-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <a id="link-pricing" href="{{ url("/search") }}">Buscar</a>
-                </li>
+                    <form action="{{url('search')}}" method="POST" class="flex items-center m-0">
+                        @csrf
+                        @method('POST')
+                        <input type="text" name="search" placeholder="Buscar"
+                            class="w-full h-10 border text-right md:text-left border-none rounded-lg focus:border-none p-1 text-white bg-primary"
+                            value="{{$search}}">
 
+                        {{-- <button type="submit"
+                            class="btn bg-green-800 my-8 mx-auto hover:bg-green-900 rounded-lg"><i
+                                class="fa-solid fa-magnifying-glass"></i> Buscar</button> --}}
+                    </form>
+                </li>
+                @else
+                <li class="navbar-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a id="link-pricing" href="{{ url("/login") }}">Login</a>
+                </li>
+                @endauth
             </ul>
         </div>
     </div>

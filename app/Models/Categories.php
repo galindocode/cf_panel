@@ -18,6 +18,6 @@ class Categories extends Model
     ];
     public function getExcerptAttribute()
     {
-        return mb_substr($this->description, 0, 60) . '...';
+        return mb_substr($this->description, 0, 40) . '...';
     }
 }
