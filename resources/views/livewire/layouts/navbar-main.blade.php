@@ -31,11 +31,12 @@
                     <i class="fa-solid fa-brain"></i>
                     <span id="link-videos">Videos</span>
                 </a>
-                <li class="navbar-item">
+                <a class="navbar-item" href="{{ url("/categorias") }}">
                     <i class="fa-solid fa-icons"></i>
-                    <a id="link-pricing" href="{{ url("/categorias") }}">Categorias</a>
-                </li>
-                <li class="navbar-item">
+                    <span id="link-videos">Categorias</span>
+                </a>
+
+                <li class=" navbar-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <form action="{{url('search')}}" method="POST" class="flex items-center m-0">
                         @csrf
@@ -50,10 +51,10 @@
                     </form>
                 </li>
                 @else
-                <li class="navbar-item">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <a id="link-pricing" href="{{ url("/login") }}">Login</a>
-                </li>
+                <a class="navbar-item" href="{{ url("/login") }}">
+                    <i class="fa-solid fa-user"></i>
+                    <span id="link-videos">Login</span>
+                </a>
                 @endauth
             </ul>
         </div>
@@ -70,13 +71,8 @@
 
     var site = window.location.href
     console.log(site)
-    if(site.includes("videos")){
-        document.getElementById("link-home").classList.remove("active");
-        document.getElementById("link-videos").classList.add("active");
-    }
-    else if(site.includes("precios")){
-        document.getElementById("link-home").classList.remove("active");
-        document.getElementById("link-pricing").classList.add("active");
-    }
-    
+    if(site.includes(" videos")){ document.getElementById("link-home").classList.remove("active");
+                        document.getElementById("link-videos").classList.add("active"); } else
+                        if(site.includes("precios")){ document.getElementById("link-home").classList.remove("active");
+                        document.getElementById("link-pricing").classList.add("active"); } 
 </script>
