@@ -29,7 +29,7 @@ $count = 1;
       <td><a href="{{ $video->path }}" target="_blank" rel="noopener noreferrer">{{ $video->path }}</a></td>
       <td>
         <a href="{{ url('admin/videos/' . $video->id . '/edit') }}" class="btn btn-primary">Editar</a>
-        <form action="{{ url('videos/' . $video->id) }}" method="POST" class="d-inline">
+        <form action="{{ url('admin/videos/' . $video->id) }}" method="POST" class="d-inline">
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-danger">Eliminar</button>

@@ -68,7 +68,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('admin.users.update', ['user' => $user]);
     }
 
     /**
@@ -80,7 +82,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        if ($request->password) {
+            $user->update(['password' => bcrypt($request->password)]);
+        }
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+
+        return redirect('/admin/users/');
     }
 
     /**
@@ -92,6 +105,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        $user->videos()->delete();
         $user->delete();
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');
     }

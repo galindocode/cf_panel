@@ -43,21 +43,15 @@ class VideosController extends Controller
      */
     public function store(Request $request)
     {
-        $type = $this->getType($request);
-        $functionName = 'store' . $type . 'Video';
-        $this->$functionName($request);
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+        $data['slug'] = str_replace(' ', '-', Str::lower($data['small_description']));
+        Videos::create($data);
 
 
         return redirect('/admin/videos');
     }
 
-    private function storeYoutubeVideo(Request $request)
-    {
-        $data = $request->all();
-        $data['user_id'] = Auth::id();
-        $data['slug'] = str_replace(' ', '-', Str::lower($data['small_description']));
-        Videos::create($data);
-    }
 
     /**
      * Display the specified resource.
@@ -76,9 +70,12 @@ class VideosController extends Controller
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Videos $videos)
+    public function edit($id)
     {
-        //
+        $video = Videos::find($id);
+        $categories = Categories::all();
+
+        return view('admin.videos.update', ['video' => $video, 'categories' => $categories]);
     }
 
     /**
@@ -88,9 +85,17 @@ class VideosController extends Controller
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Videos $videos)
+    public function update(Request $request, $id)
     {
-        //
+        $video = Videos::find($id);
+
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+        $data['slug'] = str_replace(' ', '-', Str::lower($data['small_description']));
+        $video->update($data);
+
+
+        return redirect('/admin/videos');
     }
 
     /**
@@ -99,9 +104,10 @@ class VideosController extends Controller
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Videos $videos)
+    public function destroy($id)
     {
-        $videos->delete();
+        Videos::destroy($id);
+        return redirect('/admin/videos');
     }
 
     // Helpers

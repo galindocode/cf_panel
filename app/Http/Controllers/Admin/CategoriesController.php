@@ -22,6 +22,11 @@ class CategoriesController extends Controller
         return view('admin.categories.create');
     }
 
+    public function edit($id)
+    {
+        return view('admin.categories.edit', ["categorie" => Categories::find($id)]);
+    }
+
     public function store(Request $request)
     {
 
@@ -29,14 +34,36 @@ class CategoriesController extends Controller
         $new_name = rand() . '.' . $image->extension();
         $image->move(public_path('images'), $new_name);
         $data = $request->all();
-        $data['slug'] = str_replace(' ', '-', Str::lower($data['name']));
+        $data['slug'] = str_replace(' ', '-', Str::lower($data['small_description']));
 
         Categories::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'slug' => $data['slug'],
-            'free' => $data['free'],
             'image' => $new_name
+        ]);
+
+        return redirect('/admin/categories');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = Categories::find($id);
+
+        $image = $request->file('image');
+        if ($image) {
+            $new_name = rand() . '.' . $image->extension();
+            $image->move(public_path('images'), $new_name);
+            $category->update(['image' => $new_name]);
+        }
+
+        $data = $request->all();
+        $data['slug'] = str_replace(' ', '-', Str::lower($data['small_description']));
+
+        $category->update([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'slug' => $data['slug']
         ]);
 
         return redirect('/admin/categories');

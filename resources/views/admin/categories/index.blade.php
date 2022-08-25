@@ -3,10 +3,10 @@ $count = 0;
 @endphp
 @extends('adminlte::page')
 
-@section('title', 'Categorías')
+@section('title', 'Editar Categorías')
 
 @section('content_header')
-<h1>Lista de Categorías</h1>
+<h1>Editar de Categorías</h1>
 @stop
 
 @section('content')
